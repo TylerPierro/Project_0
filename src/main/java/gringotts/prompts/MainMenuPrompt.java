@@ -60,7 +60,7 @@ public class MainMenuPrompt implements Prompt {
 	    	case "6": case "transactions": case "history": case "transaction history":
 	    		if (isLoggedIn)	{
 		    		ArrayList<Transaction> history = (ArrayList<Transaction>) aDao.getTransactionHistory();
-		    		Collections.sort(history);
+		    		//Collections.sort(history);
 		    		System.out.println(history);
 	    		} else	System.out.println("Please log in first");
 	    		return this;
@@ -95,14 +95,6 @@ public class MainMenuPrompt implements Prompt {
 		} catch (NullPointerException e)	{
 			return this;
 		}
-		
-    	//This will log out the user if the program stops running
-    	Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-    	    public void run() {
-    	    	System.out.println("Logging out all users");
-    	        uDao.logout();
-    	    }
-    	}));
 		return this;
 	}
 

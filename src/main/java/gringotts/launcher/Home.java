@@ -1,5 +1,7 @@
 package gringotts.launcher;
 
+import gringotts.dao.UserDAO;
+import gringotts.dao.UserSerializer;
 import gringotts.prompts.MainMenuPrompt;
 import gringotts.prompts.Prompt;
 
@@ -65,6 +67,15 @@ public class Home	{
     	Prompt currentPrompt = new MainMenuPrompt();
     	while(true)	{
         	currentPrompt = currentPrompt.run();
+        	
+        	//This will log out the user if the program stops running (other than from manual termination)
+        	Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+        	    public void run() {
+        	    	System.out.println("Logging out all users");
+        	        UserDAO uDao = new UserSerializer();
+					uDao.logout();
+        	    }
+        	}));
         }
     }
 }
