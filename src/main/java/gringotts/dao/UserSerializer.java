@@ -87,10 +87,23 @@ public class UserSerializer implements UserDAO {
 		
 		//Add if not already on database
 		if (!isRegistered) 	{
-			System.out.println("adding new user");
+			System.out.println("One moment while we finalize your account...");
+			try {
+				Thread.sleep(500);
+				System.out.println("*scribble*");
+				Thread.sleep(1000);
+				System.out.println("*scribble scribble*");
+				Thread.sleep(500);
+				System.out.println("And...");
+				Thread.sleep(2500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Done.  Your brand new account is on the record, " + newUser.getUsername());
 			userList.add(newUser);
 		}
-		System.out.println("user list: " + userList);
+		//System.out.println("user list: " + userList);
 		// write new list to file
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_LOCATION + "users.txt"))) {
 			oos.writeObject(userList);

@@ -20,7 +20,7 @@ public class RegisterPrompt implements Prompt {
 					System.out.println("I'm not going to call you that!  Try again.");
 					throw new IllegalArgumentException(username);
 				}
-			System.out.println("And what will be your new pass phrase " + username + "?  Careful, our magic is case sensitive.");
+			System.out.println("And what will be your new pass phrase " + username + "?");
 			String password = scan.nextLine();
 			for (char c : password.toCharArray())
 				if (Character.isWhitespace(c))	{

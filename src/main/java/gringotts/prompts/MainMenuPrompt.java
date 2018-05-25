@@ -1,7 +1,6 @@
 package gringotts.prompts;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 import gringotts.beans.Transaction;
@@ -21,7 +20,7 @@ public class MainMenuPrompt implements Prompt {
 		boolean isLoggedIn = false;
 		User test = aDao.getCurrentUser();
 		if (test != null) isLoggedIn = true;
-		System.out.println("Select an option");
+		System.out.println("What would you like to do today?");
 		System.out.println("1:  Register new user");
 		System.out.println("2:  Log in existing user");
 		System.out.println("3:  Withdraw");
@@ -75,7 +74,7 @@ public class MainMenuPrompt implements Prompt {
 	    			System.out.println("So you want to be an admin?  Tell me the admin priviledge phrase");
 	    			String response = scan.nextLine();
 	    			if (response.equals("Solemnly Swear"))	{
-	    				System.out.println("You're an admin, " + cU.getUsername());
+	    				System.out.println("Oh well as long as your Sirius about it.  You're an admin, " + cU.getUsername());
 	    				cU.setAdmin(true);
 	    				uDao.updateUser(cU);
 	    				return new AdminMenuPrompt();
